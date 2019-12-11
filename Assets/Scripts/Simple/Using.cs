@@ -12,6 +12,7 @@ public enum Doing
 
 public class Using : MonoBehaviour
 {
+    public string nameAudio;
     public Sprite os;
     public int helpnum;
     public Animation animation;
@@ -19,7 +20,7 @@ public class Using : MonoBehaviour
     public bool cod, mouse;
     public Doing doing;
     public GameObject newSprite;
-    bool have, codetextbool, m;
+    bool have, codetextbool, m, al;
     public ItemType toUse;
     public float timer, i;
 
@@ -45,7 +46,8 @@ public class Using : MonoBehaviour
                 codetextbool = false;
             }
         if (mouse)
-            if (m)
+        {
+            if (!m)
             {
                 if (gameObject.transform.localPosition.x < i)
                 {
@@ -56,18 +58,24 @@ public class Using : MonoBehaviour
             {
                 gameObject.transform.position -= new Vector3(2.5f, 0, 0) * Time.deltaTime;
             }
-        if (timer > 0)
-        {
-            m = true;
-            i = 5;
-            GetComponent<Collider2D>().enabled = false;
-            timer -= Time.deltaTime;
-        }
-        if (timer <= 0)
-        {
-            m = false;
-            i = 1.5f;
-            GetComponent<Collider2D>().enabled = true;
+            if (timer > 0)
+            {
+                m = true;
+                i = 9;
+                GetComponent<Collider2D>().enabled = false;
+                timer -= Time.deltaTime;
+            }
+            if (timer <= 0)
+            {
+                m = false;
+                i = 11.5f;
+                GetComponent<Collider2D>().enabled = true;
+                if (al)
+                {
+                GetComponent<SpriteRenderer>().SmoothlyAlpha(1, 1);
+                    al = false;
+                }
+            }
         }
     }
 
@@ -81,6 +89,8 @@ public class Using : MonoBehaviour
             i = 5;
             GetComponent<Collider2D>().enabled = false;
             timer = 5;
+            al = true;
+            GetComponent<SpriteRenderer>().SmoothlyAlpha(0, 1);
         }
         if (toUse == ItemType.None)
         {
@@ -145,6 +155,8 @@ public class Using : MonoBehaviour
             default:
                 break;
         }
+        if (nameAudio != null)
+        Music.music.PlayMusik(nameAudio);
         if (helpnum != 15 && helpnum != 19 && helpnum != 32)
             Inventar.inventar.helpt[helpnum] = true;
     }

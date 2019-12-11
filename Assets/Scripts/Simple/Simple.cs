@@ -359,6 +359,7 @@ public static class Simple
     {
         Color color = sr.color;
         time = time / Mathf.Abs(color.a - targetAlpha);
+        float timerStop = time;
         while (color.a != targetAlpha)
         {
             if (targetAlpha > color.a)
@@ -367,6 +368,9 @@ public static class Simple
             if (Mathf.Abs(targetAlpha - color.a) < Time.deltaTime / time * 2)
                 color.a = targetAlpha;
             sr.color = color;
+            timerStop -= Time.deltaTime;
+            if (timerStop <= 0)
+                break;
             if (color.a == targetAlpha)
                 break;
             yield return null;

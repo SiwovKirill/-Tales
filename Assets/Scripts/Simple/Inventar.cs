@@ -46,6 +46,7 @@ public class Inventar : MonoBehaviour
     }
     public bool Use(ItemType toUse, int h)
     {
+       // if (selectidIt != null)
         if (toUse == selectidIt.itUse)
         {
             selectidIm.sprite = null;
@@ -56,6 +57,7 @@ public class Inventar : MonoBehaviour
             return true;
         }
         else return false;
+      //  else return false;
     }
 
     public void ItNum(int itnum)

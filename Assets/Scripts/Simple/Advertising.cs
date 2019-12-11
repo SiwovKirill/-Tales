@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 
 public class Advertising : MonoBehaviour
@@ -12,9 +13,13 @@ public class Advertising : MonoBehaviour
     public bool adv;
     public int num;
     public GameObject helpButton;
+    string gameId = "1234567";
+    bool testMode = true;
     // Start is called before the first frame update
     void Start()
     {
+        Advertisement.Initialize(gameId, testMode);
+
         help[0] = "Что то лежит под одеялом";
         help[1] = "Ключ-Карта, как раз то, что мне нужно";
         help[2] = "Книга, если стряхнуть с неё пару килограм пыли, то я даже смогу поднять её";
@@ -78,6 +83,7 @@ public class Advertising : MonoBehaviour
 
     IEnumerator Advt()
     {
+        Advertisement.Show();
         while (timer < 1)
         {
             timer += Time.deltaTime;
