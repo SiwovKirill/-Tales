@@ -61,14 +61,14 @@ public class Using : MonoBehaviour
             if (timer > 0)
             {
                 m = true;
-                i = 9;
+                i = 10;
                 GetComponent<Collider2D>().enabled = false;
                 timer -= Time.deltaTime;
             }
             if (timer <= 0)
             {
                 m = false;
-                i = 11.5f;
+                i = 13.2f;
                 GetComponent<Collider2D>().enabled = true;
                 if (al)
                 {
