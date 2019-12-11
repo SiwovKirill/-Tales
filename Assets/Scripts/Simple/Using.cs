@@ -155,8 +155,8 @@ public class Using : MonoBehaviour
             default:
                 break;
         }
-        if (nameAudio != null)
-        Music.music.PlayMusik(nameAudio);
+        //if (nameAudio != null)
+        //Music.music.PlayMusik(nameAudio);
         if (helpnum != 15 && helpnum != 19 && helpnum != 32)
             Inventar.inventar.helpt[helpnum] = true;
     }
